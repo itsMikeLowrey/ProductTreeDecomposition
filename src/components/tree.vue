@@ -26,7 +26,7 @@ export default {
   methods: {
     nodeClicked: function (event) {
       console.log(event.data.name)
-      this.$refs.tree.collapseAll(event.data)
+      // this.$refs.tree.collapseAll(event.data)
     }
   }
 }
