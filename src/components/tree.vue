@@ -11,6 +11,7 @@ import { TreeSource } from '@/assets/master.js'
 import { parseToTree } from '@/assets/js/parseToTree.js'
 
 export default {
+  name: 'Tree',
   components: {
     tree
   },

@@ -1,7 +1,8 @@
 var TreeSource = {
-  'Persistant Key Storage': { children: ['Ordering', 'Card', 'Customer Support'] },
-  'Ordering': { children: ['Shipping', 'Ording Website'] },
-  'Card': { children: ['Manufacture'] }
+  'Persistant Key Storage': { children: ['Ordering', 'Manufacturing Card', 'Accessories'] },
+  'Ordering': { children: ['Shipping', 'Ordering Website'] },
+  'Accessories': { children: ['Documentation', 'Recording Paper', 'Software'] },
+  'Software': { children: ['Stuff'] }
 
 }
 
