@@ -7,9 +7,8 @@
 </template>
 <script>
 import { tree } from 'vued3tree'
-import { TreeSource } from '@/assets/master.js'
+import { TreeSource } from '@/assets/treeSource.js'
 import { parseToTree } from '@/assets/js/parseToTree.js'
-
 export default {
   name: 'Tree',
   components: {
@@ -25,8 +24,13 @@ export default {
   },
   methods: {
     nodeClicked: function (event) {
-      console.log(event.data.name)
-      // this.$refs.tree.collapseAll(event.data)
+      this.$emit('nodeClicked', event.data)
+    },
+    expandNode: function (node) {
+      this.$refs.tree.expand(node)
+    },
+    collapseNode: function (node) {
+      this.$refs.tree.collapseAll(node)
     }
   }
 }
