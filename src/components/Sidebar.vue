@@ -1,6 +1,6 @@
 <template>
-  <div>
-  <v-card>
+    <v-layout v-layout align-center justify-space-around column fill-height>
+  <v-card class="mb-2">
     <v-card-text>
         <div class="title" v-if="currentNodeName"> {{ currentNodeName }}</div>
         <div class="title" v-if="!currentNodeName"> Select A Component</div>
@@ -13,19 +13,15 @@
       </v-layout>
     </v-card-actions>
   </v-card>
-  <v-card v-if="summary">
-    <v-card-title primary-title class="justify-center">
-      <div>
-        <h3 class="headline">Component Summary</h3>
-      </div>
-    </v-card-title>
+  <v-card v-if="summary" class="mt-2">
+
     <v-card-text >
-    <div> {{summary}}</div>
+      <h3 class="title">Component Summary</h3>
+    <div  class="mt-3"> {{summary}}</div>
     </v-card-text>
 
-
   </v-card>
-</div>
+</v-layout>
 </template>
 
 <script>

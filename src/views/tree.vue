@@ -18,7 +18,7 @@
 import Sidebar from '@/components/Sidebar.vue'
 import Tree from '@/components/tree.vue'
 export default {
-  name: 'home',
+  name: 'Treepage',
   components: {
     Tree,
     Sidebar
