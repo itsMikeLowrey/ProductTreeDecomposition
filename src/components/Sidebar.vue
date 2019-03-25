@@ -1,5 +1,6 @@
 <template>
-    <v-layout v-layout align-center justify-space-around column fill-height>
+  <div>
+
   <v-card class="mb-2">
     <v-card-text>
         <div class="title" v-if="currentNodeName"> {{ currentNodeName }}</div>
@@ -21,7 +22,7 @@
     </v-card-text>
 
   </v-card>
-</v-layout>
+</div>
 </template>
 
 <script>
