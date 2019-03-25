@@ -10,15 +10,14 @@
       <v-layout row wrap justify-center align-center>
       <v-btn flat v-on:click="expand" color="orange">Expand</v-btn>
       <v-btn flat v-on:click="collapse" color="orange">Collapse</v-btn>
-      <v-btn flat color="orange">Explore</v-btn>
       </v-layout>
     </v-card-actions>
   </v-card>
   <v-card v-if="summary" class="mt-2">
 
     <v-card-text >
-      <h3 class="title">Component Summary</h3>
-    <div  class="mt-3"> {{summary}}</div>
+      <h3 class="title">Component Info</h3>
+      <div  class="mt-3"> {{summary}}</div>
     </v-card-text>
 
   </v-card>
@@ -38,8 +37,8 @@ export default {
   computed: {
     summary: function () {
       let node = componentInfo[this.currentNodeName]
-      if (node && node['Summary']) {
-        return node['Summary']
+      if (node && node['Sum']) {
+        return node['Sum']
       }
       return undefined
     }
