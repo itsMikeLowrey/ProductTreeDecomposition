@@ -13,11 +13,13 @@
       </v-layout>
     </v-card-actions>
   </v-card>
-  <v-card v-if="summary" class="mt-2">
+  <v-card v-if="infoExist" class="mt-2">
 
     <v-card-text >
       <h3 class="title">Component Info</h3>
       <div  class="mt-3"> {{summary}}</div>
+      <h3 class="title">Requirements</h3>
+      <div  class="mt-3"> {{req}}</div>
     </v-card-text>
 
   </v-card>
@@ -35,10 +37,23 @@ export default {
     }
   },
   computed: {
+    infoExist: function () {
+      if (this.summary || this.req) {
+        return true
+      }
+      return false
+    },
     summary: function () {
       let node = componentInfo[this.currentNodeName]
       if (node && node['Sum']) {
         return node['Sum']
+      }
+      return undefined
+    },
+    req: function () {
+      let node = componentInfo[this.currentNodeName]
+      if (node && node['Req']) {
+        return node['Req']
       }
       return undefined
     }
