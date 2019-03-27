@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import * as R from 'ramda'
 
 async function parseToTree (flatData) {
   const adoptedFlatArray = addParentKey(flatData)
@@ -9,6 +9,7 @@ async function parseToTree (flatData) {
 //  all is passed by reference
 function createNestedTree (adoptedFlatArray) {
   let all = {}
+  let root
   adoptedFlatArray.forEach(function (item) {
     all[item.name] = item
   })
@@ -20,25 +21,25 @@ function createNestedTree (adoptedFlatArray) {
         child.children = []
       }
       child.children.push(node)
+    } else {
+      root = all[name]
     }
   })
-  let rootIndex = _.findIndex(adoptedFlatArray, function (node) { return _.isNull(node.parent) })
-  let root = adoptedFlatArray[rootIndex]
   return root
 }
 
 function addParentKey (flatData) {
   let parentsToFind = []
   for (const child in flatData) {
-    parentsToFind = _.concat(parentsToFind, child)
-    parentsToFind = _.concat(parentsToFind, flatData[child].children)
+    parentsToFind = R.concat(parentsToFind, [child])
+    parentsToFind = R.concat(parentsToFind, flatData[child].children)
   }
-  parentsToFind = _.uniq(parentsToFind)
+  parentsToFind = R.uniq(parentsToFind)
   let adoptedFlatArray = []
   for (const child of parentsToFind) {
     const parent = findParent(child, flatData)
     const pair = { name: child, parent: parent }
-    adoptedFlatArray = _.concat(adoptedFlatArray, pair)
+    adoptedFlatArray = R.concat(adoptedFlatArray, [pair])
   }
   return adoptedFlatArray
 }

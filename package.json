@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "esm": "^3.2.20",
-    "lodash": "^4.17.11",
     "ramda": "^0.26.1",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
