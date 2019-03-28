@@ -4,7 +4,6 @@ const componentInfo = require('./src/assets/componentInfo.js')
 
 const getChildrenKeys = (tree) =>
   R.pipe(
-    R.identity,
     R.pluck('children'),
     R.values,
     R.flatten
