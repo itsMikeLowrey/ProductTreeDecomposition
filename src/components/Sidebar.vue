@@ -16,10 +16,17 @@
   <v-card v-if="infoExist" class="mt-2">
 
     <v-card-text >
-      <h3 class="title">Component Info</h3>
-      <div  class="mt-3"> {{summary}}</div>
-      <h3 class="title">Requirements</h3>
-      <div  class="mt-3"> {{req}}</div>
+      <div  class="mt-3 subheading"> {{checkItem('Sum')}}</div>
+
+      <div v-for="(item, key) in optList">
+        <div v-if="checkItem(key)">
+          <h3 class="title mt-3">{{item}}</h3>
+          <div  class="mt-3 subheading">
+            {{checkItem(key)}}
+          </div>
+      </div>
+    </div>
+
     </v-card-text>
 
   </v-card>
@@ -33,29 +40,18 @@ export default {
   props: ['currentNodeName'],
   data () {
     return {
-      componentInfo: componentInfo
+      componentInfo: componentInfo,
+      optList: { 'Req': 'Requirements', 'In': 'Inputs', 'Out': 'Outputs', 'Pro': 'Process' }
     }
   },
   computed: {
     infoExist: function () {
-      if (this.summary || this.req) {
+      if (this.checkItem('Sum') || this.checkItem('Req') || this.checkItem('In') ||
+        this.checkItem('Out') || this.checkItem('Pro')
+      ) {
         return true
       }
       return false
-    },
-    summary: function () {
-      let node = componentInfo[this.currentNodeName]
-      if (node && node['Sum']) {
-        return node['Sum']
-      }
-      return undefined
-    },
-    req: function () {
-      let node = componentInfo[this.currentNodeName]
-      if (node && node['Req']) {
-        return node['Req']
-      }
-      return undefined
     }
   },
 
@@ -65,6 +61,13 @@ export default {
     },
     collapse: function (event) {
       this.$emit('collapse')
+    },
+    checkItem: function (item) {
+      let node = componentInfo[this.currentNodeName]
+      if (node && node[item]) {
+        return node[item]
+      }
+      return undefined
     }
   }
 }
